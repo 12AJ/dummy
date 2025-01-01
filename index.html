@@ -311,8 +311,11 @@
             const originalContent = document.body.innerHTML;
             document.body.innerHTML = element.outerHTML;
             window.print();
-            // document.body.innerHTML = originalContent;
-             $('#preview').html('');
+            setTimeout(() => {
+                document.body.innerHTML = originalContent;
+                $('#preview').html('');
+            }, 4000);
+           
         }, 2000);
         });
 
