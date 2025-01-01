@@ -311,11 +311,8 @@
             const originalContent = document.body.innerHTML;
             document.body.innerHTML = element.outerHTML;
             window.print();
-            setTimeout(() => {
-                document.body.innerHTML = originalContent;
-                $('#preview').html('');
-            }, 4000);
-           
+            // document.body.innerHTML = originalContent;
+            //  $('#preview').html('');
         }, 2000);
         });
 
