@@ -163,23 +163,23 @@
 
             <div class="form-row">
                 <div class="half-width">
-                    <label for="age1">वय (वर्षांमध्ये) : <span style="color: red;">*</span></label>
-                    <input type="number" id="age1" name="age1" step="any" required>
+                    <label for="age1">वय (वर्षांमध्ये) : </label>
+                    <input type="number" id="age1" name="age1" step="any" >
                 </div>
                 <div class="half-width">
-                    <label for="weight1">वजन (किलो मध्ये) : <span style="color: red;">*</span></label>
-                    <input type="number" id="weight1" name="weight1" step="any" required>
+                    <label for="weight1">वजन (किलो मध्ये) : </label>
+                    <input type="number" id="weight1" name="weight1" step="any" >
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="half-width">
-                    <label for="height1">उंची (फूट मध्ये): <span style="color: red;">*</span></label>
-                    <input type="number" id="height1" name="height1" step="any" required>
+                    <label for="height1">उंची (फूट मध्ये): </label>
+                    <input type="number" id="height1" name="height1" step="any" >
                 </div>
                 <div class="half-width">
-                    <label for="color1">रंग : <span style="color: red;">*</span></label>
-                    <input type="text" id="color1" name="color1" required>
+                    <label for="color1">रंग : </label>
+                    <input type="text" id="color1" name="color1" >
                 </div>
             </div>
 
@@ -192,23 +192,23 @@
 
             <div class="form-row">
                 <div class="half-width">
-                    <label for="age2">वय (वर्षांमध्ये) : <span style="color: red;">*</span></label>
-                    <input type="number" id="age2" name="age2" step="any" required>
+                    <label for="age2">वय (वर्षांमध्ये) : </label>
+                    <input type="number" id="age2" name="age2" step="any" >
                 </div>
                 <div class="half-width">
-                    <label for="weight2">वजन (किलो मध्ये) : <span style="color: red;">*</span></label>
-                    <input type="number" id="weight2" name="weight2" step="any" required>
+                    <label for="weight2">वजन (किलो मध्ये) : </label>
+                    <input type="number" id="weight2" name="weight2" step="any" >
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="half-width">
-                    <label for="height2">उंची (फूट मध्ये): <span style="color: red;">*</span></label>
-                    <input type="number" id="height2" name="height2" step="any" required>
+                    <label for="height2">उंची (फूट मध्ये): </label>
+                    <input type="number" id="height2" name="height2" step="any" >
                 </div>
                 <div class="half-width">
-                    <label for="color2">रंग : <span style="color: red;">*</span></label>
-                    <input type="text" id="color2" name="color2" required>
+                    <label for="color2">रंग : </label>
+                    <input type="text" id="color2" name="color2" >
                 </div>
             </div>
 
@@ -218,14 +218,16 @@
             <!-- <label for="date" >तारीख :</label> -->
             <input type="date" id="date" name="date" required readonly hidden>
 
-            <!-- Image Upload Field for बैलांची र्कंवा वळंूची िायार्चत्रे -->
-            <label for="bullImage">६. स्पर्धेत सहभागी होणाऱ्या बैलांची किंवा वळूची छायाचित्रे : </label>
-            <input type="file" id="bullImage" name="bullImage" accept="image/*" >
-
             <!-- Image Upload Field for आधारकार्डची प्रतिमा -->
             <label for="aadhaarImage">७. स्पर्धेत भाग घेणाऱ्या व्यक्तीच्या ओळखीबाबतचा पुरावा :</label>
             <input type="file" id="aadhaarImage" name="aadhaarImage" accept="image/*" >
 
+
+            <!-- Image Upload Field for बैलांची र्कंवा वळंूची िायार्चत्रे -->
+            <label for="bullImage">६. स्पर्धेत सहभागी होणाऱ्या बैलांची किंवा वळूची छायाचित्रे : </label>
+            <input type="file" id="bullImage" name="bullImage" accept="image/*" >
+
+            
             <button type="submit" class="submitBtn">प्रिंट करा</button>  <button type="reset" class="resetBtn">रीसेट करा</button>
         </form>
     </div>
@@ -271,8 +273,12 @@
     </script>
 
     <script>
-        var currentDate = new Date().toISOString().split('T')[0]; // 'YYYY-MM-DD' format
-        $('#date').val(currentDate);
+        var currentDate = new Date();
+var day = String(currentDate.getDate()).padStart(2, '0');  // Adds leading zero if day is less than 10
+var month = String(currentDate.getMonth() + 1).padStart(2, '0');  // Months are zero-indexed, so add 1
+var year = currentDate.getFullYear();
+var formattedDate = `${day}-${month}-${year}`;
+// $('#date').val(formattedDate);
         
         let animalImg = '';
         $('#bullImage').on('change', function(event) {
@@ -340,17 +346,17 @@
         तळेगाव दशासर शंकरपट यात्रा समिती <br>
         जिल्हा अमरावती
     </p><br>
-    <p style="margin-left: 20px;">  १. अर्जदाराचे नाव - <span id="fullName">${$('#name').val()}</span></p><br>
+    <p style="margin-left: 20px;">  १. अर्जदाराचे नाव - <span id="fullName"style="min-width:200px">${$('#name').val()}</span></p><br>
 
     <p style="margin-left: 20px;">  २. पत्ता व संपर्काचा (दूरध्वनी/भ्रमणध्वनि) क्रमांक : <span id="phoneNum">${$('#phone').val()}</span></p><br>
-        <p style="margin-left: 20px;"> <span id="formAddress">${$('#address').val()}</span></p><br>
+        <p style="margin-left: 20px;"> <span id="formAddress" style="min-width:300px">${$('#address').val()}</span></p><br>
 
 <p style="margin-left: 20px;">  ३. मी/आम्ही, खालील सही करणार, आपणाकडून आयोजित केलेल्या बैलगाडी शर्यतीच्या स्पर्धेत सहभाग घेऊ इच्छित आहे/आहोत. </p><br>
 
 <p style="margin-left: 40px;"> मी, याद्वारे असे घोषित करतो कि, मला प्राण्यांना क्रूरतेने वागवण्यास प्रतिबंध करण्याबाबत (बैलगाडी शर्यत आयोजन) नियम, २०१७ याच्या तरतुदी माहिती आहेत. मी सदर तरतुदीचे पूर्णपणे पालन करील आणि त्यास बांधील राहील अशी हमी देत आहे. या अधिनियमाच्या व त्याखाली केलेल्या नियमांच्या तरतुदीचे उलंघन केल्यास मी शिक्षा केली जाण्यास पत्र असेन.</p><br>
 <div style="text-align: right;">
 <p style="width: 160px;display: inline-block; text-align: left;"> स्वाक्षरी _____________</p><br><br>
-<p style="width: 160px;display: inline-block; text-align: left;">  दिनांक : <span id="date3">${$('#date').val()}</span> </p>
+<p style="width: 160px;display: inline-block; text-align: left;">  दिनांक : <span id="date3">${formattedDate}</span> </p>
 </div>
     </p>
 
@@ -381,20 +387,20 @@
     
     <main>
        
-        <p style="margin-left: 20px;">  १. पशुपालकाचे नाव व पत्ता:- <span id="">${$('#ownerName').val()}</span></p><br>
-        <p style="margin-left: 20px;"> <span id="">${$('#address2').val()}</span></p><br>
+        <p style="margin-left: 20px;">  १. पशुपालकाचे नाव व पत्ता:- <span id=""style="min-width:200px">${$('#ownerName').val()}</span></p><br>
+        <p style="margin-left: 20px;"> <span id=""style="min-width:360px">${$('#address2').val()}</span></p><br>
     
         <p style="margin-left: 20px;"> २. A) प्राण्याची माहिती:- (अ) प्राण्याची प्रजात/प्रकार :<span id="">${$('#species1').val()}</span> </p><br>
     
-        <p style="margin-left: 20px;"> (ब) वय : <span id="">${$('#age1').val()}</span> (क) वजन : <span id="">${$('#weight1').val()}</span> (ड) उंची: <span id="">${$('#height1').val()}</span> </p><br>
+        <p style="margin-left: 20px;"> (ब) वय : <span id="">${$('#age1').val()==''?'&emsp;&emsp;&emsp;':$('#age1').val() + ' वर्ष'}</span>&emsp; (क) वजन : <span id="">${$('#weight1').val()==''?'&emsp;&emsp;&emsp;':$('#weight1').val() + ' किलो'}</span>&emsp; (ड) उंची: <span id="">${$('#height1').val()==''?'&emsp;&emsp;&emsp;':$('#height1').val() + ' फूट'}</span> </p><br>
 
-        <p style="margin-left: 20px;"> (इ) रंग : <span id="">${$('#color1').val()}</span> (फ) ओळख खून कोणतीही असल्यास : <span id="">${$('#identification1').val() }</span >  </p > <br>
+        <p style="margin-left: 20px;"> (इ) रंग : <span id="">${$('#color1').val()}</span>&emsp; (फ) ओळख खून कोणतीही असल्यास : <span id="">${$('#identification1').val()==''?'&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;':$('#identification1').val() }</span >  </p > <br>
 
             <p style="margin-left: 20px;"> B) प्राण्याची माहिती (अ) प्राण्याची प्रजात/प्रकार : <span id="">${$('#species2').val()}</span> </p><br />
 
-            <p style="margin-left: 20px;"> (ब) वय : <span id="">${$('#age2').val()}</span> (क) वजन : <span id="">${$('#weight2').val()}</span> (ड) उंची: <span id="">${$('#height2').val()}</span> </p><br>
+            <p style="margin-left: 20px;"> (ब) वय : <span id="">${$('#age2').val()==''?'&emsp;&emsp;&emsp;':$('#age2').val() + ' वर्ष'}</span>&emsp; (क) वजन : <span id="">${$('#weight2').val()==''?'&emsp;&emsp;&emsp;':$('#weight2').val() + ' किलो'}</span>&emsp; (ड) उंची: <span id="">${$('#height2').val()==''?'&emsp;&emsp;&emsp;':$('#height2').val() + ' फूट'}</span> </p><br>
 
-                <p style="margin-left: 20px;"> (इ) रंग : <span id="">${$('#color2').val()}</span> (फ) ओळख खून कोणतीही असल्यास : <span id="">${$('#identification2').val()}</span>  </p><br>
+                <p style="margin-left: 20px;"> (इ) रंग : <span id="">${$('#color2').val()}</span>&emsp; (फ) ओळख खून कोणतीही असल्यास : <span id="">${$('#identification2').val()==''?'&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;':$('#identification2').val()}</span>  </p><br>
 
                     <p style="margin-left: 20px;"> ३. तपासणी दिनांक : __________________  तपासणी वेळ : __________________  </p><br />
 
